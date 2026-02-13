@@ -1,0 +1,319 @@
+
+<group name="mikrotik,vpn">
+
+
+<rule id="110010" level="3">
+  <decoded_as>mikrotik-vpn</decoded_as>
+  <field name="vpn_status">initializing</field>
+  <description>MikroTik VPN: Connection initializing</description>
+  <group>vpn,connection</group>
+</rule>
+
+<rule id="110011" level="3">
+  <decoded_as>mikrotik-vpn</decoded_as>
+  <field name="vpn_status">connecting</field>
+  <description>MikroTik VPN: Connection in progress</description>
+  <group>vpn,connection</group>
+</rule>
+
+<rule id="110012" level="3">
+  <decoded_as>mikrotik-vpn</decoded_as>
+  <field name="vpn_status">connected</field>
+  <description>MikroTik VPN: Connection established successfully</description>
+  <mitre>
+    <id>T1133</id>
+  </mitre>
+  <group>vpn,connection</group>
+</rule>
+
+<rule id="110013" level="3">
+  <decoded_as>mikrotik-vpn</decoded_as>
+  <field name="vpn_status">disconnected</field>
+  <description>MikroTik VPN: Connection disconnected</description>
+  <group>vpn,connection</group>
+</rule>
+
+<rule id="110014" level="5">
+  <decoded_as>mikrotik-vpn</decoded_as>
+  <field name="vpn_status">terminating</field>
+  <description>MikroTik VPN: Connection terminating</description>
+  <group>vpn,connection</group>
+</rule>
+ 
+ <!-- ============================================================================
+     L2TP AUTHENTICATION - STANDALONE
+     ============================================================================ -->
+
+<rule id="110020" level="2">
+  <decoded_as>mikrotik-l2tp-first-packet</decoded_as>
+  <description>MikroTik L2TP: First UDP packet received</description>
+</rule>
+
+
+<rule id="110021" level="3">
+  <decoded_as>mikrotik-l2tp-authenticated</decoded_as>
+  <description>MikroTik L2TP: User '$(user)' authenticated successfully</description>
+  <mitre>
+    <id>T1078</id>
+  </mitre>
+  <group>vpn,l2tp,authentication_success</group>
+</rule>
+
+<rule id="110022" level="3">
+  <decoded_as>mikrotik-l2tp-connected</decoded_as>
+  <description>MikroTik L2TP: User '$(user)' connected successfully</description>
+  <mitre>
+    <id>T1133</id>
+  </mitre>
+  <group>vpn,l2tp,connection</group>
+</rule>
+
+<rule id="110023" level="3">
+  <decoded_as>mikrotik-l2tp-login</decoded_as>
+  <description>MikroTik L2TP: User '$(user)' logged in - Assigned IP: $(assigned_ip), Source: $(src_ip)</description>
+  <mitre>
+    <id>T1078</id>
+    <id>T1133</id>
+  </mitre>
+  <group>vpn,l2tp,authentication_success,session_start</group>
+</rule>
+
+<rule id="110024" level="3">
+  <decoded_as>mikrotik-l2tp-logout</decoded_as>
+  <description>MikroTik L2TP: User '$(user)' logged out - Duration: $(session_time)s, Sent: $(bytes_sent) bytes, Received: $(bytes_received) bytes</description>
+  <group>vpn,l2tp,session_end</group>
+</rule>
+
+<rule id="110025" level="3">
+  <decoded_as>mikrotik-l2tp-disconnected</decoded_as>
+  <description>MikroTik L2TP: User '$(user)' disconnected</description>
+  <group>vpn,l2tp,connection</group>
+</rule>
+
+<rule id="110026" level="5">
+  <decoded_as>mikrotik-l2tp-terminating</decoded_as>
+  <field name="termination_reason">hungup</field>
+  <description>MikroTik L2TP: User '$(user)' session terminated - Client hungup</description>
+  <group>vpn,l2tp,connection</group>
+</rule>
+
+<rule id="110027" level="6">
+  <decoded_as>mikrotik-l2tp-terminating</decoded_as>
+  <field name="termination_reason">timeout</field>
+  <description>MikroTik L2TP: User '$(user)' session terminated - Session timeout</description>
+  <group>vpn,l2tp,connection,timeout</group>
+</rule>
+
+<rule id="110028" level="7">
+  <decoded_as>mikrotik-l2tp-terminating</decoded_as>
+  <field name="termination_reason">authentication failed</field>
+  <description>MikroTik L2TP: User '$(user)' authentication failed</description>
+  <mitre>
+    <id>T1110</id>
+  </mitre>
+  <group>vpn,l2tp,authentication_failed</group>
+</rule>
+
+<rule id="110029" level="5">
+  <decoded_as>mikrotik-l2tp-terminating</decoded_as>
+  <field name="termination_reason">\.+</field>
+  <description>MikroTik L2TP: User '$(user)' session terminated - $(termination_reason)</description>
+  <group>vpn,l2tp,connection</group>
+</rule>
+
+<!-- ============================================================================
+     IPSEC PHASE 1 OPERATIONS (110031-110040)
+     ============================================================================ -->
+
+<rule id="110031" level="3">
+  <decoded_as>mikrotik-ipsec-sa-established</decoded_as>
+  <description>MikroTik IPSec: ISAKMP-SA established - $(src_ip):$(src_port) to $(dst_ip):$(dst_port), SPI: $(spi)</description>
+  <mitre>
+    <id>T1133</id>
+  </mitre>
+  <group>vpn,ipsec,phase1,connection</group>
+</rule>
+
+<rule id="110032" level="3">
+  <decoded_as>mikrotik-ipsec-sa-deleted</decoded_as>
+  <field name="rekey">0</field>
+  <description>MikroTik IPSec: ISAKMP-SA deleted - $(src_ip):$(src_port) to $(dst_ip):$(dst_port), SPI: $(spi)</description>
+  <group>vpn,ipsec,phase1,connection</group>
+</rule>
+
+<rule id="110033" level="2">
+  <decoded_as>mikrotik-ipsec-sa-deleted</decoded_as>
+  <field name="rekey">1</field>
+  <description>MikroTik IPSec: ISAKMP-SA deleted (rekey) - $(src_ip):$(src_port) to $(dst_ip):$(dst_port)</description>
+  <group>vpn,ipsec,phase1,rekey</group>
+</rule>
+
+<rule id="110034" level="3">
+  <decoded_as>mikrotik-ipsec-phase1-respond</decoded_as>
+  <description>MikroTik IPSec: Responding to new Phase 1 ($(ipsec_mode)) - $(src_ip):$(resp_code) to $(dst_ip):$(dst_port)</description>
+  <group>vpn,ipsec,phase1,negotiation</group>
+</rule>
+
+<rule id="110035" level="8">
+  <decoded_as>mikrotik-ipsec-phase1-failed</decoded_as>
+  <field name="failure_reason">time up</field>
+  <description>MikroTik IPSec: Phase 1 negotiation failed - Timeout - $(src_ip):$(src_resp_code) to $(dst_ip):$(dest_resp_code)</description>
+  <mitre>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,ipsec,phase1,connection_failure,timeout</group>
+</rule>
+
+<rule id="110036" level="9">
+  <decoded_as>mikrotik-ipsec-phase1-failed</decoded_as>
+  <field name="failure_reason">no proposal chosen</field>
+  <description>MikroTik IPSec: Phase 1 negotiation failed - No proposal chosen - $(src_ip) to $(dst_ip)</description>
+  <mitre>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,ipsec,phase1,connection_failure,config_mismatch</group>
+</rule>
+
+<rule id="110037" level="10">
+  <decoded_as>mikrotik-ipsec-phase1-failed</decoded_as>
+  <field name="failure_reason">authentication failed</field>
+  <description>MikroTik IPSec: Phase 1 negotiation failed - Authentication failed - $(src_ip) to $(dst_ip)</description>
+  <mitre>
+    <id>T1110</id>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,ipsec,phase1,authentication_failed</group>
+</rule>
+
+<rule id="110038" level="8">
+  <decoded_as>mikrotik-ipsec-phase1-failed</decoded_as>
+  <field name="failure_reason">\.+</field>
+  <description>MikroTik IPSec: Phase 1 negotiation failed - $(failure_reason) - $(src_ip) to $(dst_ip)</description>
+  <mitre>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,ipsec,phase1,connection_failure</group>
+</rule>
+
+<!-- ============================================================================
+     ROUTER IPSEC MANAGEMENT (110041-110050)
+     ============================================================================ -->
+
+<rule id="110041" level="2">
+  <decoded_as>mikrotik-router-ipsec-purging</decoded_as>
+  <description>MikroTik Router: Purging ISAKMP-SA - $(src_ip):$(src_port) to $(dst_ip):$(dst_port), SPI: $(spi)</description>
+  <group>vpn,ipsec,router,maintenance</group>
+</rule>
+
+<rule id="110042" level="3">
+  <decoded_as>mikrotik-router-ipsec-dying</decoded_as>
+  <description>MikroTik Router: ISAKMP-SA dying - $(src_ip):$(src_port) to $(dst_ip):$(dst_port), SPI: $(spi)</description>
+  <group>vpn,ipsec,router,connection</group>
+</rule>
+
+<rule id="110043" level="3">
+  <decoded_as>mikrotik-router-phase1-initiate</decoded_as>
+  <description>MikroTik Router: Initiating new Phase 1 ($(ipsec_mode)) - $(src_ip):$(dest_port) to $(dst_ip):$(resp_code)</description>
+  <group>vpn,ipsec,router,phase1,negotiation</group>
+</rule>
+
+<!-- ============================================================================
+     SECURITY DETECTION & CORRELATION (110051-110060)
+     ============================================================================ -->
+
+<rule id="110051" level="10" frequency="5" timeframe="120">
+  <if_matched_sid>110028</if_matched_sid>
+  <same_source_ip/>
+  <description>MikroTik L2TP: Multiple authentication failures detected from $(src_ip) - Possible brute force attack</description>
+  <mitre>
+    <id>T1110</id>
+    <id>T1110.001</id>
+  </mitre>
+  <group>vpn,l2tp,brute_force,authentication_failed</group>
+</rule>
+
+<rule id="110052" level="10" frequency="3" timeframe="60">
+  <if_matched_sid>110037</if_matched_sid>
+  <same_source_ip/>
+  <description>MikroTik IPSec: Multiple Phase 1 authentication failures from $(src_ip) - Possible attack</description>
+  <mitre>
+    <id>T1110</id>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,ipsec,brute_force,authentication_failed</group>
+</rule>
+
+<rule id="110053" level="8" frequency="5" timeframe="60">
+  <if_matched_sid>110035</if_matched_sid>
+  <same_source_ip/>
+  <description>MikroTik IPSec: Multiple Phase 1 timeout failures from $(src_ip) - Connectivity issues</description>
+  <mitre>
+    <id>T1499</id>
+  </mitre>
+  <group>vpn,ipsec,connection_failure,timeout</group>
+</rule>
+
+<rule id="110054" level="8" frequency="10" timeframe="300">
+  <if_matched_sid>110023</if_matched_sid>
+  <same_user/>
+  <description>MikroTik L2TP: User '$(user)' multiple logins detected - Possible credential sharing</description>
+  <mitre>
+    <id>T1078</id>
+    <id>T1078.001</id>
+  </mitre>
+  <group>vpn,l2tp,suspicious_activity,credential_abuse</group>
+</rule>
+
+<rule id="110055" level="7" frequency="3" timeframe="30">
+  <if_matched_sid>110015</if_matched_sid>
+  <description>MikroTik VPN: Rapid connection failures detected - Configuration or network issues</description>
+  <group>vpn,connection_failure,rapid_failure</group>
+</rule>
+
+<rule id="110056" level="9" frequency="5" timeframe="120">
+  <if_matched_sid>110020</if_matched_sid>
+  <same_source_ip/>
+  <description>MikroTik L2TP: Multiple connection attempts without completion from $(src_ip) - Scanning activity</description>
+  <mitre>
+    <id>T1046</id>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,l2tp,scanning,reconnaissance</group>
+</rule>
+
+<rule id="110057" level="6" frequency="10" timeframe="60">
+  <if_matched_sid>110013</if_matched_sid>
+  <same_user/>
+  <description>MikroTik VPN: User frequent disconnections detected for '$(user)' - Connection instability</description>
+  <group>vpn,connection,instability</group>
+</rule>
+
+<rule id="110058" level="8" frequency="3" timeframe="180">
+  <if_matched_sid>110036</if_matched_sid>
+  <same_source_ip/>
+  <description>MikroTik IPSec: Multiple 'no proposal chosen' failures from $(src_ip) - Configuration mismatch or probe</description>
+  <mitre>
+    <id>T1595</id>
+  </mitre>
+  <group>vpn,ipsec,config_mismatch,reconnaissance</group>
+</rule>
+
+<rule id="110059" level="5">
+  <decoded_as>mikrotik-l2tp-logout</decoded_as>
+  <field name="session_time" type="pcre2">^[0-9]{1,2}$</field>
+  <description>MikroTik L2TP: Short session detected for user '$(user)' - Duration: $(session_time) seconds</description>
+  <group>vpn,l2tp,suspicious_activity,short_session</group>
+</rule>
+
+<rule id="110060" level="7">
+  <decoded_as>mikrotik-l2tp-logout</decoded_as>
+  <field name="bytes_sent">0</field>
+  <field name="bytes_received">0</field>
+  <description>MikroTik L2TP: Zero data transfer session for user '$(user)' - Possible probe</description>
+  <mitre>
+    <id>T1046</id>
+  </mitre>
+  <group>vpn,l2tp,suspicious_activity,zero_transfer</group>
+</rule>
+
+</group>
