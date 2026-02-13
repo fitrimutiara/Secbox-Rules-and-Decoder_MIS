@@ -1,0 +1,239 @@
+<decoder name="ruckus">
+  <program_name>Core</program_name>
+  <prematch>@@</prematch>
+</decoder>
+
+<!--
+2025-12-19T12:36:59+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="34:FA:9F:36:CE:C0","radio"="11a/n/ac","fromChannel"="40","toChannel"="149","apName"="RuckusAP Lt.1 Hanggar","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.160","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="461749003016","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="Cibitung Lt.1 Rack 20-23"
+
+2025-12-19T12:38:01+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="F8:E7:1E:26:B5:70","apName"="RuckusAP 42 no 12","rogueMac"="F0:09:0D:94:17:6B","ssid"="TP-Link_176C","wlanId"="14","radio"="802.11 a","channel"="157","timestamp"="1766147837000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="481503409925","timeZone"="","apLocation"="","zoneName"="Default Zone"
+
+2025-12-19T12:39:05+00:00 Metrodata-Wireless Core: @@347,apHealthAirtimeUtilizationFlag,"apMac"="CC:1B:5A:2C:58:80","apName"="RuckusAP LT2Rack 30-50","currentValue"="77","configuredThreshold"="70","radio"="2.4GHz","fwVersion"="5.2.2.0.2122","model"="R550","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="SMI gudang Baru","apGps"="","apIpAddress"="10.37.6.249","apIpv6Address"="","apGroupUUID"="31de9ef6-4f7b-4678-8c88-0f6306410138","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="442322000391","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="LT2Rack 30-50"
+
+2025-12-19T12:39:56+00:00 Metrodata-Wireless Core: @@109,apConfApplying,"apMac"="B4:79:C8:05:F1:B0","configID"="d2dda034-dbec-11f0-ac98-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+
+
+2025-12-19T12:38:24+00:00 Metrodata-Wireless Core: @@111,apConfUpdateFailed,"apMac"="B4:79:C8:05:F1:B0","configID"="d2dda034-dbec-11f0-ac98-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+
+
+-->
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">^@@\d+,([^,]+),"</regex>
+  <order>action</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"zoneUUID"="([^"]+)"</regex>
+  <order>zone_uuid</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apMac"="([^"]+)"</regex>
+  <order>ap_mac</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apName"="([^"]+)"</regex>
+  <order>ap_name</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"rogueMac"="([^"]+)"</regex>
+  <order>rogue_mac</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"ssid"="([^"]+)"</regex>
+  <order>ssid</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"wlanId"="([^"]+)"</regex>
+  <order>wlan_id</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"radio"="([^"]+)"</regex>
+  <order>radio</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"channel"="([^"]+)"</regex>
+  <order>channel</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"timestamp"="([^"]+)"</regex>
+  <order>event_timestamp</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"rogueType"="([^"]+)"</regex>
+  <order>rogue_type</order>
+</decoder>
+
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"roguePolicyName"="([^"]+)"</regex>
+  <order>rogue_policy_name</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"rogueRuleName"="([^"]+)"</regex>
+  <order>rogue_rule</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"serialNumber"="([^"]+)"</regex>
+  <order>serial_number</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apLocation"="([^"]*)"</regex>
+  <order>ap_location</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"zoneName"="([^"]+)"</regex>
+  <order>zone_name</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"fromChannel"="([^"]+)"</regex>
+  <order>from_channel</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"toChannel"="([^"]+)"</regex>
+  <order>to_channel</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"fwVersion"="([^"]+)"</regex>
+  <order>fw_version</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"model"="([^"]+)"</regex>
+  <order>model</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apGps"="([^"]*)"</regex>
+  <order>ap_gps</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apIpAddress"="([^"]+)"</regex>
+  <order>ap_ip</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apIpv6Address"="([^"]*)"</regex>
+  <order>ap_ipv6</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apGroupUUID"="([^"]+)"</regex>
+  <order>ap_group_uuid</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"domainId"="([^"]+)"</regex>
+  <order>domain_id</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"idealEventVersion"="([^"]+)"</regex>
+  <order>ideal_event_version</order>
+</decoder>
+
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apDescription"="([^"]+)"</regex>
+  <order>ap_description</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"currentValue"="([^"]+)"</regex>
+  <order>current_value</order>
+</decoder>
+
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"configuredThreshold"="([^"]+)"</regex>
+  <order>configured_threshold</order>
+</decoder>
+
