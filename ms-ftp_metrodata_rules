@@ -1,0 +1,221 @@
+<!-- MS FTP Security Rules -->
+<group name="ftp,ms-ftp,">
+
+  <!-- ====== BASE RULES ====== -->
+  <rule id="100100" level="3">
+    <decoded_as>ms-ftp</decoded_as>
+    <description>MS FTP Server activity detected</description>
+  </rule>
+
+  <!-- ====== AUTHENTICATION RULES ====== -->
+  <rule id="100101" level="3">
+    <if_sid>100100</if_sid>
+    <action>USER</action>
+    <description>MS FTP: Authentication attempt - User: $(user) from $(srcip)</description>
+    <group>ftp_auth,authentication_attempt,</group>
+  </rule>
+
+  <rule id="100102" level="3">
+    <if_sid>100100</if_sid>
+    <action>PASS</action>
+    <status>230</status>
+    <description>MS FTP: Successful login - User: $(user) from $(srcip)</description>
+    <group>ftp_success,authentication_success,pci_dss_10.2.5,</group>
+  </rule>
+
+  <rule id="100103" level="5">
+    <if_sid>100100</if_sid>
+    <action>PASS</action>
+    <status>530</status>
+    <description>MS FTP: Authentication FAILED - User: $(user) from $(srcip)</description>
+    <group>ftp_failed,authentication_failed,pci_dss_10.2.4,pci_dss_10.2.5,</group>
+  </rule>
+
+  <!-- Multiple failed login attempts (Brute Force Detection) -->
+  <rule id="100104" level="10" frequency="5" timeframe="300">
+    <if_matched_sid>100103</if_matched_sid>
+    <same_source_ip />
+    <description>MS FTP: Multiple authentication failures from $(srcip) - Possible brute force attack</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>ftp_failed,authentication_failures,pci_dss_10.2.4,pci_dss_11.4,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <!-- ====== FILE OPERATION RULES ====== -->
+  <rule id="100105" level="3">
+    <if_sid>100100</if_sid>
+    <action>LIST</action>
+    <status>226</status>
+    <description>MS FTP: Directory listing - $(fullpath) by $(user)</description>
+    <group>ftp_list,</group>
+  </rule>
+
+  <rule id="100106" level="4">
+    <if_sid>100100</if_sid>
+    <action>RETR</action>
+    <status>226</status>
+    <description>MS FTP: File download - $(fullpath) by $(user) from $(srcip)</description>
+    <group>ftp_download,pci_dss_10.6.1,</group>
+  </rule>
+
+  <rule id="100107" level="5">
+    <if_sid>100100</if_sid>
+    <action>STOR</action>
+    <status>226</status>
+    <description>MS FTP: File upload - $(fullpath) by $(user) from $(srcip)</description>
+    <group>ftp_upload,pci_dss_10.6.1,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <rule id="100108" level="7">
+    <if_sid>100100</if_sid>
+    <action>DELE</action>
+    <status>250</status>
+    <description>MS FTP: File DELETED - $(fullpath) by $(user) from $(srcip)</description>
+    <mitre>
+      <id>T1485</id>
+    </mitre>
+    <group>ftp_delete,pci_dss_10.2.7,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <!-- File Rename/Move Operations -->
+  <rule id="100109" level="6">
+    <if_sid>100100</if_sid>
+    <action>RNFR</action>
+    <status>350</status>
+    <description>MS FTP: File rename initiated - $(fullpath) by $(user)</description>
+    <group>ftp_rename,</group>
+  </rule>
+
+  <rule id="100110" level="6">
+    <if_sid>100100</if_sid>
+    <action>RNTO</action>
+    <status>250</status>
+    <description>MS FTP: File renamed/moved to - $(fullpath) by $(user) from $(srcip)</description>
+    <mitre>
+      <id>T1070.003</id>
+    </mitre>
+    <group>ftp_rename,pci_dss_10.2.7,</group>
+  </rule>
+
+  <!-- ====== SENSITIVE DIRECTORY ACCESS ====== -->
+  <rule id="100111" level="6">
+    <if_sid>100106,100107</if_sid>
+    <match>SAP|PRODUCTION|EFAKTUR</match>
+    <description>MS FTP: Access to SENSITIVE directory - $(fullpath) by $(user) from $(srcip)</description>
+    <group>ftp_sensitive,pci_dss_10.6.1,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <rule id="100112" level="7">
+    <if_sid>100108,100110</if_sid>
+    <match>SAP|PRODUCTION|EFAKTUR</match>
+    <description>MS FTP: File modification in SENSITIVE directory - $(fullpath) by $(user) from $(srcip)</description>
+    <mitre>
+      <id>T1565</id>
+    </mitre>
+    <group>ftp_sensitive,pci_dss_10.2.7,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <!-- ====== EXTERNAL IP ACCESS DETECTION ====== -->
+  <rule id="100113" level="8">
+    <if_sid>100102</if_sid>
+    <srcip>!10.0.0.0/8,!172.16.0.0/12,!192.168.0.0/16</srcip>
+    <description>MS FTP: Login from EXTERNAL IP - User: $(user) from $(srcip)</description>
+    <mitre>
+      <id>T1133</id>
+    </mitre>
+    <group>ftp_external_access,pci_dss_10.6.1,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <rule id="100114" level="9">
+    <if_sid>100106,100107</if_sid>
+    <srcip>!10.0.0.0/8,!172.16.0.0/12,!192.168.0.0/16</srcip>
+    <description>MS FTP: File transfer from EXTERNAL IP - $(fullpath) by $(user) from $(srcip)</description>
+    <mitre>
+      <id>T1041</id>
+    </mitre>
+    <group>ftp_external_access,data_exfiltration,pci_dss_10.6.1,</group>
+  </rule>
+
+  <!-- ====== SUSPICIOUS ACTIVITY ====== -->
+  <!-- Multiple file downloads in short time -->
+  <rule id="100115" level="9" frequency="10" timeframe="60">
+    <if_matched_sid>100106</if_matched_sid>
+    <same_source_ip />
+    <description>MS FTP: Mass file download detected from $(srcip) - Possible data exfiltration</description>
+    <mitre>
+      <id>T1020</id>
+    </mitre>
+    <group>ftp_suspicious,data_exfiltration,pci_dss_10.6.1,</group>
+  </rule>
+
+  <!-- Multiple file uploads in short time -->
+  <rule id="100116" level="8" frequency="10" timeframe="60">
+    <if_matched_sid>100107</if_matched_sid>
+    <same_source_ip />
+    <description>MS FTP: Mass file upload detected from $(srcip)</description>
+    <group>ftp_suspicious,pci_dss_10.6.1,</group>
+  </rule>
+
+  <!-- Multiple file deletions -->
+  <rule id="100117" level="10" frequency="5" timeframe="60">
+    <if_matched_sid>100108</if_matched_sid>
+    <same_source_ip />
+    <description>MS FTP: Multiple file deletions from $(srcip) - Possible ransomware activity</description>
+    <mitre>
+      <id>T1485</id>
+    </mitre>
+    <group>ftp_suspicious,ransomware,pci_dss_10.2.7,</group>
+  </rule>
+
+  <!-- ====== SESSION MONITORING ====== -->
+  <rule id="100118" level="2">
+    <if_sid>100100</if_sid>
+    <action>ControlChannelOpened</action>
+    <description>MS FTP: New connection from $(srcip)</description>
+    <group>ftp_session,</group>
+  </rule>
+
+  <rule id="100119" level="2">
+    <if_sid>100100</if_sid>
+    <action>QUIT</action>
+    <status>221</status>
+    <description>MS FTP: Session closed - User: $(user) from $(srcip)</description>
+    <group>ftp_session,</group>
+  </rule>
+
+  <!-- ====== FAILED OPERATIONS ====== -->
+  <rule id="100120" level="5">
+    <if_sid>100100</if_sid>
+    <status>550</status>
+    <description>MS FTP: Operation FAILED - Permission denied for $(user) on $(fullpath)</description>
+    <group>ftp_failed,access_denied,</group>
+  </rule>
+
+  <rule id="100121" level="6">
+    <if_sid>100100</if_sid>
+    <status>450|451|452</status>
+    <description>MS FTP: Operation FAILED - Error accessing $(fullpath) by $(user)</description>
+    <group>ftp_failed,</group>
+  </rule>
+
+  <!-- ====== AFTER-HOURS ACCESS ====== -->
+  <rule id="100122" level="7">
+    <if_sid>100102</if_sid>
+    <time>22:00-06:00</time>
+    <description>MS FTP: After-hours login - User: $(user) from $(srcip)</description>
+    <group>ftp_after_hours,pci_dss_10.6.1,</group>
+  </rule>
+
+  <rule id="100123" level="8">
+    <if_sid>100107,100108,100110</if_sid>
+    <time>22:00-06:00</time>
+    <match>SAP|PRODUCTION|EFAKTUR</match>
+    <description>MS FTP: After-hours file modification in sensitive directory by $(user) from $(srcip)</description>
+    <mitre>
+      <id>T1070</id>
+    </mitre>
+    <group>ftp_after_hours,ftp_sensitive,pci_dss_10.2.7,</group>
+  </rule>
+
+</group>
