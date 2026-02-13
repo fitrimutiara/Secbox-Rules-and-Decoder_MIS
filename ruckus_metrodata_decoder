@@ -1,138 +1,47 @@
+<!-- Ruckus Wireless Decoder - Fixed for Actual Log Format -->
+<!-- Decoder untuk log Ruckus Wireless Controller melalui syslog forwarder -->
+
+
+2026 Feb 13 09:47:50 (secbox-collector) any->/var/log/syslog 2026-02-13T09:47:50+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="34:FA:9F:36:BC:20","apName"="RuckusAP-Lt.1 Hanggar","rogueMac"="8E:7C:0D:46:00:E8","ssid"="Infinix HOT 20i","wlanId"="18","radio"="802.11 g","channel"="6","timestamp"="1770976012000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="461749002718","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:47:59 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:00+00:00 Metrodata-Wireless Core: @@109,apConfApplying,"apMac"="B4:79:C8:05:F1:B0","configID"="ea004eb3-0884-11f1-9837-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+2026 Feb 13 09:47:59 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:00+00:00 Metrodata-Wireless Core: @@111,apConfUpdateFailed,"apMac"="B4:79:C8:05:F1:B0","configID"="ea004eb3-0884-11f1-9837-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+2026 Feb 13 09:48:22 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:22+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="34:FA:9F:36:D0:B0","radio"="11a/n/ac","fromChannel"="36","toChannel"="40","apName"="RuckusAP-Lt.4 Hanggar","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.121","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="461749003047","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="Cibitung Lt.4 Rack 14-29"
+2026 Feb 13 09:48:30 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:30+00:00 Metrodata-Wireless Core: @@111,apConfUpdateFailed,"apMac"="B4:79:C8:05:F1:B0","configID"="ea004eb3-0884-11f1-9837-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+2026 Feb 13 09:48:30 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:30+00:00 Metrodata-Wireless Core: @@109,apConfApplying,"apMac"="B4:79:C8:05:F1:B0","configID"="ea004eb3-0884-11f1-9837-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+2026 Feb 13 09:48:42 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:43+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="34:FA:9F:36:B5:00","radio"="11g/n","fromChannel"="11","toChannel"="6","apName"="RuckusAP-Lt.1 Hanggar","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.161","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="461749002604","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="Cibitung Lt.1 Rack 18-08"
+2026 Feb 13 09:48:50 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:51+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="CC:1B:5A:2D:73:80","radio"="11a/n/ac/ax","fromChannel"="48","toChannel"="36","apName"="RuckusAP LT1Rack 11-39","fwVersion"="5.2.2.0.2122","model"="R550","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.7.69","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="442322004919","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="LT1Rack 11-39"
+2026 Feb 13 09:48:56 (secbox-collector) any->/var/log/syslog 2026-02-13T09:48:57+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="F8:E7:1E:21:A8:90","apName"="RuckusAP 42","rogueMac"="08:55:31:C8:BF:79","ssid"="SEASONS TO VIHARA","wlanId"="14","radio"="802.11 a","channel"="161","timestamp"="1770976105000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="471503401314","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:48:58 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:00+00:00 Metrodata-Wireless Core: @@109,apConfApplying,"apMac"="B4:79:C8:05:F1:B0","configID"="ea004eb3-0884-11f1-9837-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+2026 Feb 13 09:48:59 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:00+00:00 Metrodata-Wireless Core: @@111,apConfUpdateFailed,"apMac"="B4:79:C8:05:F1:B0","configID"="ea004eb3-0884-11f1-9837-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
+2026 Feb 13 09:49:00 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:00+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="34:15:93:09:C3:20","apName"="RuckusAP-Lt.18 Baru","rogueMac"="B2:65:3A:C4:72:BB","ssid"="VinFastB0653AC432BC","wlanId"="46","radio"="802.11 a","channel"="36","timestamp"="1770976115000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="372202013851","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:49:00 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:00+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="CC:1B:5A:2D:21:20","radio"="11b/g/n/ax","fromChannel"="1","toChannel"="11","apName"="RuckusAP LT1Outbound 3","fwVersion"="5.2.2.0.2122","model"="R550","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.7.77","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="442322003601","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="LT1Outbound 3"
+2026 Feb 13 09:49:02 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:03+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="34:FA:9F:36:AF:E0","radio"="11g/n","fromChannel"="11","toChannel"="1","apName"="RuckusAP-Lt.2 Hanggar","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.126","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="461749002522","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="Cibitung Lt.2 Rack 18-15"
+2026 Feb 13 09:49:02 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:03+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="34:FA:9F:36:AF:E0","radio"="11a/n/ac","fromChannel"="48","toChannel"="153","apName"="RuckusAP-Lt.2 Hanggar","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.126","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="461749002522","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="Cibitung Lt.2 Rack 18-15"
+2026 Feb 13 09:49:10 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:10+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="34:FA:9F:36:D0:20","apName"="RuckusAP Lt.1 Cibitung","rogueMac"="1C:3A:60:21:EE:98","ssid"="AvasWIFI","wlanId"="18","radio"="802.11 g","channel"="11","timestamp"="1770976116000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="461749003038","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:49:10 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:10+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="34:FA:9F:36:D0:20","apName"="RuckusAP Lt.1 Cibitung","rogueMac"="3C:46:A1:7E:B6:68","ssid"="DMIA2-OFFICE","wlanId"="18","radio"="802.11 g","channel"="11","timestamp"="1770976116000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="461749003038","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:49:10 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:10+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="34:FA:9F:36:D0:20","apName"="RuckusAP Lt.1 Cibitung","rogueMac"="EC:E7:A2:3C:F7:58","ssid"="fh_3cf758","wlanId"="18","radio"="802.11 g","channel"="11","timestamp"="1770976116000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="461749003038","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:49:10 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:10+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="34:FA:9F:36:D0:20","apName"="RuckusAP Lt.1 Cibitung","rogueMac"="3C:46:A1:3E:B6:68","ssid"="DMIA2-GENBA","wlanId"="18","radio"="802.11 g","channel"="11","timestamp"="1770976116000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="461749003038","timeZone"="","apLocation"="","zoneName"="Default Zone"
+2026 Feb 13 09:49:14 (secbox-collector) any->/var/log/syslog 2026-02-13T09:49:14+00:00 Metrodata-Wireless Core: @@347,apHealthAirtimeUtilizationFlag,"apMac"="C8:A6:08:25:6C:30","apName"="RuckusAP LT1Inbound 3","currentValue"="77","configuredThreshold"="70","radio"="2.4GHz","fwVersion"="5.2.2.0.2122","model"="R550","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.7.72","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="182322016439","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="LT1Inbound 3"
+
+
+<!-- Parent Decoder - Matches the actual log format with syslog prefix -->
 <decoder name="ruckus">
-  <program_name>Core</program_name>
-  <prematch>@@</prematch>
+  <prematch>Metrodata-Wireless Core: @@</prematch>
 </decoder>
 
-<!--
-2025-12-19T12:36:59+00:00 Metrodata-Wireless Core: @@306,apChannelChanged,"apMac"="34:FA:9F:36:CE:C0","radio"="11a/n/ac","fromChannel"="40","toChannel"="149","apName"="RuckusAP Lt.1 Hanggar","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.160","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="461749003016","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="Cibitung Lt.1 Rack 20-23"
-
-2025-12-19T12:38:01+00:00 Metrodata-Wireless Core: @@186,generalRogueAPDetected,"zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","apMac"="F8:E7:1E:26:B5:70","apName"="RuckusAP 42 no 12","rogueMac"="F0:09:0D:94:17:6B","ssid"="TP-Link_176C","wlanId"="14","radio"="802.11 a","channel"="157","timestamp"="1766147837000","rogueType"="Rogue","roguePolicyName"="No policy matched","rogueRuleName"="No rule matched","serialNumber"="481503409925","timeZone"="","apLocation"="","zoneName"="Default Zone"
-
-2025-12-19T12:39:05+00:00 Metrodata-Wireless Core: @@347,apHealthAirtimeUtilizationFlag,"apMac"="CC:1B:5A:2C:58:80","apName"="RuckusAP LT2Rack 30-50","currentValue"="77","configuredThreshold"="70","radio"="2.4GHz","fwVersion"="5.2.2.0.2122","model"="R550","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="SMI gudang Baru","apGps"="","apIpAddress"="10.37.6.249","apIpv6Address"="","apGroupUUID"="31de9ef6-4f7b-4678-8c88-0f6306410138","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="442322000391","domainName"="Administration Domain","idealEventVersion"="3.5.1","apDescription"="LT2Rack 30-50"
-
-2025-12-19T12:39:56+00:00 Metrodata-Wireless Core: @@109,apConfApplying,"apMac"="B4:79:C8:05:F1:B0","configID"="d2dda034-dbec-11f0-ac98-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
-
-
-2025-12-19T12:38:24+00:00 Metrodata-Wireless Core: @@111,apConfUpdateFailed,"apMac"="B4:79:C8:05:F1:B0","configID"="d2dda034-dbec-11f0-ac98-aee83961be0f","apName"="RuckusAP-Lt.3 Cibitung","fwVersion"="5.2.2.0.2122","model"="R610","zoneUUID"="f77a8816-3049-40cd-8484-82919275ddc3","zoneName"="Default Zone","timeZone"="WIB-7","apLocation"="","apGps"="","apIpAddress"="10.37.4.193","apIpv6Address"="","apGroupUUID"="da1b4125-6c75-4cb1-89f2-64c670e03aff","domainId"="8b2081d5-9662-40d9-a3db-2a3cf4dde3f7","serialNumber"="411849006778","domainName"="Administration Domain","idealEventVersion"="3.5.0","apDescription"="Cibitung-1"
-
-
--->
-
+<!-- Event ID and Action Decoder -->
 <decoder name="ruckus">
   <parent>ruckus</parent>
-  <regex type="pcre2">^@@\d+,([^,]+),"</regex>
-  <order>action</order>
+  <regex type="pcre2">@@(\d+),([^,]+),</regex>
+  <order>event_id,action</order>
 </decoder>
 
-
+<!-- Common Fields - Zone Information -->
 <decoder name="ruckus">
   <parent>ruckus</parent>
   <regex type="pcre2">"zoneUUID"="([^"]+)"</regex>
   <order>zone_uuid</order>
 </decoder>
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"apMac"="([^"]+)"</regex>
-  <order>ap_mac</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"apName"="([^"]+)"</regex>
-  <order>ap_name</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"rogueMac"="([^"]+)"</regex>
-  <order>rogue_mac</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"ssid"="([^"]+)"</regex>
-  <order>ssid</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"wlanId"="([^"]+)"</regex>
-  <order>wlan_id</order>
-</decoder>
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"radio"="([^"]+)"</regex>
-  <order>radio</order>
-</decoder>
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"channel"="([^"]+)"</regex>
-  <order>channel</order>
-</decoder>
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"timestamp"="([^"]+)"</regex>
-  <order>event_timestamp</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"rogueType"="([^"]+)"</regex>
-  <order>rogue_type</order>
-</decoder>
-
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"roguePolicyName"="([^"]+)"</regex>
-  <order>rogue_policy_name</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"rogueRuleName"="([^"]+)"</regex>
-  <order>rogue_rule</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"serialNumber"="([^"]+)"</regex>
-  <order>serial_number</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"apLocation"="([^"]*)"</regex>
-  <order>ap_location</order>
-</decoder>
-
-
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
@@ -140,52 +49,24 @@
   <order>zone_name</order>
 </decoder>
 
-
+<!-- Common Fields - AP Information -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apMac"="([^"]+)"</regex>
+  <order>ap_mac</order>
+</decoder>
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
-  <regex type="pcre2">"fromChannel"="([^"]+)"</regex>
-  <order>from_channel</order>
+  <regex type="pcre2">"apName"="([^"]+)"</regex>
+  <order>ap_name</order>
 </decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"toChannel"="([^"]+)"</regex>
-  <order>to_channel</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"fwVersion"="([^"]+)"</regex>
-  <order>fw_version</order>
-</decoder>
-
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"model"="([^"]+)"</regex>
-  <order>model</order>
-</decoder>
-
-
-<decoder name="ruckus">
-  <parent>ruckus</parent>
-  <regex type="pcre2">"apGps"="([^"]*)"</regex>
-  <order>ap_gps</order>
-</decoder>
-
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
   <regex type="pcre2">"apIpAddress"="([^"]+)"</regex>
-  <order>ap_ip</order>
+  <order>srcip</order>
 </decoder>
-
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
@@ -193,6 +74,23 @@
   <order>ap_ipv6</order>
 </decoder>
 
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apLocation"="([^"]*)"</regex>
+  <order>ap_location</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apGps"="([^"]*)"</regex>
+  <order>ap_gps</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"apDescription"="([^"]*)"</regex>
+  <order>ap_description</order>
+</decoder>
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
@@ -200,36 +98,94 @@
   <order>ap_group_uuid</order>
 </decoder>
 
-
+<!-- Hardware Information -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"serialNumber"="([^"]+)"</regex>
+  <order>serial_number</order>
+</decoder>
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
-  <regex type="pcre2">"domainId"="([^"]+)"</regex>
-  <order>domain_id</order>
+  <regex type="pcre2">"fwVersion"="([^"]+)"</regex>
+  <order>fw_version</order>
 </decoder>
-
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
-  <regex type="pcre2">"idealEventVersion"="([^"]+)"</regex>
-  <order>ideal_event_version</order>
+  <regex type="pcre2">"model"="([^"]+)"</regex>
+  <order>model</order>
 </decoder>
 
-
+<!-- Rogue AP Specific Fields (Event 186) -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"rogueMac"="([^"]+)"</regex>
+  <order>rogue_mac</order>
+</decoder>
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
-  <regex type="pcre2">"apDescription"="([^"]+)"</regex>
-  <order>ap_description</order>
+  <regex type="pcre2">"ssid"="([^"]+)"</regex>
+  <order>ssid</order>
 </decoder>
 
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"wlanId"="([^"]+)"</regex>
+  <order>wlan_id</order>
+</decoder>
 
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"rogueType"="([^"]+)"</regex>
+  <order>rogue_type</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"roguePolicyName"="([^"]+)"</regex>
+  <order>rogue_policy_name</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"rogueRuleName"="([^"]+)"</regex>
+  <order>rogue_rule_name</order>
+</decoder>
+
+<!-- Radio and Channel Information -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"radio"="([^"]+)"</regex>
+  <order>radio</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"channel"="([^"]+)"</regex>
+  <order>channel</order>
+</decoder>
+
+<!-- Channel Change Specific Fields (Event 306) -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"fromChannel"="([^"]+)"</regex>
+  <order>from_channel</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"toChannel"="([^"]+)"</regex>
+  <order>to_channel</order>
+</decoder>
+
+<!-- Performance/Health Specific Fields (Event 347) -->
 <decoder name="ruckus">
   <parent>ruckus</parent>
   <regex type="pcre2">"currentValue"="([^"]+)"</regex>
   <order>current_value</order>
 </decoder>
-
 
 <decoder name="ruckus">
   <parent>ruckus</parent>
@@ -237,3 +193,41 @@
   <order>configured_threshold</order>
 </decoder>
 
+<!-- Configuration Specific Fields (Event 109, 111) -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"configID"="([^"]+)"</regex>
+  <order>config_id</order>
+</decoder>
+
+<!-- Domain Information -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"domainId"="([^"]+)"</regex>
+  <order>domain_id</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"domainName"="([^"]+)"</regex>
+  <order>domain_name</order>
+</decoder>
+
+<!-- Event Metadata -->
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"timestamp"="([^"]+)"</regex>
+  <order>event_timestamp</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"timeZone"="([^"]*)"</regex>
+  <order>time_zone</order>
+</decoder>
+
+<decoder name="ruckus">
+  <parent>ruckus</parent>
+  <regex type="pcre2">"idealEventVersion"="([^"]+)"</regex>
+  <order>ideal_event_version</order>
+</decoder>
