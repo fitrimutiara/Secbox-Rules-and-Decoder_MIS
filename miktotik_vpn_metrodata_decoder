@@ -1,0 +1,166 @@
+<!-- Modify it at your will. -->
+
+<decoder name="mikrotik-vpn">
+  <program_name>^metrodatavpndrc$</program_name>
+</decoder>
+
+<decoder name="test-hostname-extract">
+  <prematch type="pcre2">MikroTik-</prematch>
+  <regex type="pcre2">MikroTik-([\w-]+)</regex>
+  <order>custom_hostname</order>
+</decoder>
+
+<!-- 2. Child #1 - disconnected -->
+<decoder name="mikrotik-vpn-disconnected">
+  <parent>mikrotik-vpn</parent>
+  <prematch>disconnected</prematch>
+  <regex type="pcre2">(disconnected)$</regex>
+  <order>vpn_status</order>
+</decoder>
+
+<!-- 3. Child #2 - initializing -->
+<decoder name="mikrotik-vpn-initializing">
+  <parent>mikrotik-vpn</parent>
+  <prematch>initializing</prematch>
+  <regex type="pcre2">(initializing)\.\.\.</regex>
+  <order>vpn_status</order>
+</decoder>
+
+<!-- 4. Child #3 - connecting -->
+<decoder name="mikrotik-vpn-connecting">
+  <parent>mikrotik-vpn</parent>
+  <prematch>connecting</prematch>
+  <regex type="pcre2">(connecting)\.\.\.</regex>
+  <order>vpn_status</order>
+</decoder>
+
+<!-- 5. Child #4 - terminating with reason -->
+<decoder name="mikrotik-vpn-terminating-reason">
+  <parent>mikrotik-vpn</parent>
+  <prematch>terminating</prematch>
+  <regex type="pcre2">(terminating)\.\.\. - (.+)$</regex>
+  <order>vpn_status,termination_reason</order>
+</decoder>
+
+
+<!-- 1. ISAKMP-SA Deleted -->
+<decoder name="mikrotik-ipsec-sa-deleted">
+  <prematch>ISAKMP-SA deleted</prematch>
+  <regex type="pcre2">ISAKMP-SA (deleted) (\d+\.\d+\.\d+\.\d+)\[(\d+)\]-(\d+\.\d+\.\d+\.\d+)\[(\d+)\] spi:(\S+) rekey:(\d+)</regex>
+  <order>action,src_ip,src_port,dst_ip,dst_port,spi,rekey</order>
+</decoder>
+
+<!-- 2. ISAKMP-SA Established -->
+<decoder name="mikrotik-ipsec-sa-established">
+  <prematch>ISAKMP-SA established</prematch>
+  <regex type="pcre2">ISAKMP-SA (established) (\d+\.\d+\.\d+\.\d+)\[(\d+)\]-(\d+\.\d+\.\d+\.\d+)\[(\d+)\] spi:(\S+)</regex>
+  <order>action,src_ip,src_port,dst_ip,dst_port,spi</order>
+</decoder>
+
+<!-- 3. Phase1 Negotiation Failed -->
+<decoder name="mikrotik-ipsec-phase1-failed">
+  <prematch>phase1 negotiation failed</prematch>
+  <regex type="pcre2">phase1 negotiation (failed) due to (.+?) (\d+\.\d+\.\d+\.\d+)\[(\d+)\].*?(\d+\.\d+\.\d+\.\d+)\[(\d+)\] (\S+)</regex>
+  <order>action,failure_reason,src_ip,src_resp_code,dst_ip,dest_resp_code,spi</order>
+</decoder>
+
+<!-- 4. Phase1 Respond -->
+<decoder name="mikrotik-ipsec-phase1-respond">
+  <prematch>respond new phase 1</prematch>
+  <regex type="pcre2">respond new phase 1 \((.+?)\): (\d+\.\d+\.\d+\.\d+)\[(\d+)\].*?(\d+\.\d+\.\d+\.\d+)\[(\d+)\]</regex>
+  <order>ipsec_mode,src_ip,resp_code,dst_ip,dst_port</order>
+</decoder>
+
+<!-- 5. L2TP Terminating -->
+<decoder name="mikrotik-l2tp-terminating">
+  <prematch>l2tp-</prematch>
+  <prematch>terminating</prematch>
+  <regex type="pcre2">l2tp-(\w+).+: (terminating)\.\.\. - (.+)$</regex>
+  <order>user,vpn_status,termination_reason</order>
+</decoder>
+
+<!-- 6. L2TP Disconnected -->
+<decoder name="mikrotik-l2tp-disconnected">
+  <prematch>l2tp-</prematch>
+  <prematch>disconnected</prematch>
+  <regex type="pcre2">l2tp-(\w+).+: (disconnected)$</regex>
+  <order>user,vpn_status</order>
+</decoder>
+
+<!-- 5. L2TP Terminating - Version 2 -->
+<decoder name="mikrotik-l2tp-terminating">
+  <prematch>terminating...</prematch>
+  <regex type="pcre2">l2tp-(\w+).*terminating\.\.\. - (.+)$</regex>
+  <order>user,termination_reason</order>
+</decoder>
+
+<!-- 6. L2TP Disconnected - Version 2 -->
+<decoder name="mikrotik-l2tp-disconnected">
+  <prematch>: disconnected</prematch>
+  <regex type="pcre2">l2tp-(\w+).*: (disconnected)$</regex>
+  <order>user,vpn_status</order>
+</decoder>
+
+<!-- 1. User Logged IN (NEW) -->
+<decoder name="mikrotik-l2tp-login">
+  <prematch>logged in,</prematch>
+  <regex type="pcre2">(\w+) (logged in), (\d+\.\d+\.\d+\.\d+) from (\d+\.\d+\.\d+\.\d+)</regex>
+  <order>user,action,assigned_ip,src_ip</order>
+</decoder>
+
+<!-- 2. L2TP Authenticated (NEW) -->
+<decoder name="mikrotik-l2tp-authenticated">
+  <prematch>: authenticated</prematch>
+  <regex type="pcre2">l2tp-(\w+).*: (authenticated)$</regex>
+  <order>user,vpn_status</order>
+</decoder>
+
+<!-- 3. L2TP Connected (NEW) -->
+<decoder name="mikrotik-l2tp-connected">
+  <prematch>: connected</prematch>
+  <regex type="pcre2">l2tp-(\w+).*: (connected)$</regex>
+  <order>user,vpn_status</order>
+</decoder>
+
+<!-- 7. User Logged Out -->
+<decoder name="mikrotik-l2tp-logout">
+  <prematch>logged out,</prematch>
+  <regex type="pcre2">(\w+) (logged out), (\d+) (\d+) (\d+) (\d+) (\d+) from (\d+\.\d+\.\d+\.\d+)</regex>
+  <order>user,action,session_time,bytes_sent,bytes_received,packets_sent,packets_received,src_ip</order>
+</decoder>
+
+<!-- 8. First L2TP Packet -->
+<decoder name="mikrotik-l2tp-first-packet">
+  <prematch>first L2TP</prematch>
+  <regex type="pcre2">first L2TP (\w+) packet received from (\d+\.\d+\.\d+\.\d+)</regex>
+  <order>protocol,src_ip</order>
+</decoder>
+
+
+<!--decoder for mikrotik router-->
+
+<decoder name="mikrotik-router-ipsec">
+  <prematch type="pcre2">(purging|dying|initiate\s+new\s+phase)</prematch>
+</decoder>
+
+<!-- Child Decoders -->
+<decoder name="mikrotik-router-ipsec-purging">
+  <parent>mikrotik-router-ipsec</parent>
+  <prematch>purging</prematch>
+  <regex type="pcre2">purging ISAKMP-SA (\d+\.\d+\.\d+\.\d+)\[(\d+)\].*?(\d+\.\d+\.\d+\.\d+)\[(\d+)\] spi=(\S+)\.</regex>
+  <order>src_ip,src_port,dst_ip,dst_port,spi</order>
+</decoder>
+
+<decoder name="mikrotik-router-ipsec-dying">
+  <parent>mikrotik-router-ipsec</parent>
+  <prematch>dying</prematch>
+  <regex type="pcre2">ISAKMP-SA (dying) (\d+\.\d+\.\d+\.\d+)\[(\d+)\]-(\d+\.\d+\.\d+\.\d+)\[(\d+)\] spi:(\S+)</regex>
+  <order>action,src_ip,src_port,dst_ip,dst_port,spi</order>
+</decoder>
+
+<decoder name="mikrotik-router-phase1-initiate">
+  <parent>mikrotik-router-ipsec</parent>
+  <prematch>initiate</prematch>
+  <regex type="pcre2">initiate new phase 1 \((.+?)\): (\d+\.\d+\.\d+\.\d+)\[(\d+)\].*?(\d+\.\d+\.\d+\.\d+)\[(\d+)\]</regex>
+  <order>ipsec_mode,src_ip,dest_port,dst_ip,resp_code</order>
+</decoder>
