@@ -1,0 +1,20 @@
+<!-- 
+2026 Jan 15 01:20:27 (mtravs11.metrodata.co.id) any->C:\inetpub\logs\LogFiles\FTPSVC2\u_ex260115.log 2026-01-15 01:21:34 10.1.9.67 MTRAVS11\MetroFTP 10.1.9.63 21 OPTS UTF8+ON 200 0 0 48922e8f-4b6f-4e08-85ff-84c5a41e1d51 -
+2026 Jan 15 01:20:27 (mtravs11.metrodata.co.id) any->C:\inetpub\logs\LogFiles\FTPSVC2\u_ex260115.log 2026-01-15 01:21:34 10.1.9.67 MTRAVS11\MetroFTP 10.1.9.63 21 EPSV - 229 0 0 48922e8f-4b6f-4e08-85ff-84c5a41e1d51 -
+2026 Jan 15 01:20:27 (mtravs11.metrodata.co.id) any->C:\inetpub\logs\LogFiles\FTPSVC2\u_ex260115.log 2026-01-15 01:21:34 10.1.9.67 MTRAVS11\MetroFTP 10.1.9.63 59938 DataChannelOpened - - 0 0 48922e8f-4b6f-4e08-85ff-84c5a41e1d51 -
+2026 Jan 15 01:20:27 (mtravs11.metrodata.co.id) any->C:\inetpub\logs\LogFiles\FTPSVC2\u_ex260115.log 2026-01-15 01:21:34 10.1.9.67 MTRAVS11\MetroFTP 10.1.9.63 59938 DataChannelClosed - - 0 0 48922e8f-4b6f-4e08-85ff-84c5a41e1d51 -
+2026 Jan 15 01:20:27 (mtravs11.metrodata.co.id) any->C:\inetpub\logs\LogFiles\FTPSVC2\u_ex260115.log 2026-01-15 01:21:34 10.1.9.67 MTRAVS11\MetroFTP 10.1.9.63 21 LIST /SAP/EFAKTUR/PRODUCTION/ 226 0 0 48922e8f-4b6f-4e08-85ff-84c5a41e1d51 /SAP/EFAKTUR/PRODUCTION
+-->
+
+<decoder name="ms-ftp">
+  <prematch>MetroFTP</prematch>
+</decoder>
+
+<decoder name="ms-ftp-detail">
+  <parent>ms-ftp</parent>
+  <regex type="pcre2">any->([^\s]+)\s(\d{4}-\d{2}-\d{2})\s(\d{2}:\d{2}:\d{2})\s([0-9.]+)\s([^\s]+)\s([0-9.]+)\s(\d+)\s(LIST|RETR|STOR|DELE|USER|PASS)\s([^\s]+)\s(\d+)\s(\d+)\s(\d+)\s([a-f0-9-]+)\s(.+)</regex>
+  <order>log_file,date,time,srcip,user,dstip,dstport,action,ftp_path,id,win32_id,sub_id,session_id,fullpath</order>
+</decoder>
+
+
+
